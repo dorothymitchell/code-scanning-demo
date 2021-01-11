@@ -72,50 +72,6 @@ RUN curl -LO ${CURL_OPTIONS} \
     rm -rf drupal-7.42 && \
     rm -f *.tar.gz
 
-# tomcat - Java application (manual install)
-#
-# https://www.cvedetails.com/cve/CVE-2016-3092/
-#
-RUN curl -LO ${CURL_OPTIONS} \
-      http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.69/bin/apache-tomcat-7.0.69.tar.gz && \
-    tar zxf apache-tomcat-7.0.69.tar.gz && \
-    mkdir /opt/tomcat && \
-    cd apache-tomcat-7.0.69 && \
-    cp -R . /opt/tomcat && \
-    cd - && \
-    rm -rf apache-tomcat-7.0.69 && \
-    rm -f *.tar.gz
-
-# OpenJDK - Java (RPM install)
-#
-#
-RUN curl -LO ${CURL_OPTIONS} \
-      http://mirror.switch.ch/ftp/pool/4/mirror/scientificlinux/7.0/x86_64/updates/security/java-1.8.0-openjdk-1.8.0.91-0.b14.el7_2.x86_64.rpm && \
-    curl -LO ${CURL_OPTIONS} \
-      http://mirror.switch.ch/ftp/pool/4/mirror/scientificlinux/7.0/x86_64/updates/security/java-1.8.0-openjdk-headless-1.8.0.91-0.b14.el7_2.x86_64.rpm && \
-    touch /var/lib/rpm/* && \
-    yum -y install java-1.8.0-openjdk-1.8.0.91-0.b14.el7_2.x86_64.rpm java-1.8.0-openjdk-headless-1.8.0.91-0.b14.el7_2.x86_64.rpm && \
-    rm -f *.rpm && \
-    echo "exclude=java-1.8.0-openjdk java-1.8.0-openjdk-headless"  >> /etc/yum.conf
-
-# tomcat - Java application (RPM install)
-#
-# CVE-2013-4590, CVE-2014-0119, CVE-2014-0099, CVE-2014-0096, CVE-2014-0075
-#
-RUN curl -LO ${CURL_OPTIONS} \
-      http://vault.centos.org/7.0.1406/os/x86_64/Packages/tomcat-7.0.42-4.el7.noarch.rpm && \
-    curl -LO ${CURL_OPTIONS} \
-      http://vault.centos.org/7.0.1406/os/x86_64/Packages/tomcat-el-2.2-api-7.0.42-4.el7.noarch.rpm && \
-    curl -LO ${CURL_OPTIONS} \
-      http://vault.centos.org/7.0.1406/os/x86_64/Packages/tomcat-jsp-2.2-api-7.0.42-4.el7.noarch.rpm && \
-    curl -LO ${CURL_OPTIONS} \
-      http://vault.centos.org/7.0.1406/os/x86_64/Packages/tomcat-lib-7.0.42-4.el7.noarch.rpm && \
-    curl -LO ${CURL_OPTIONS} \
-      http://vault.centos.org/7.0.1406/os/x86_64/Packages/tomcat-servlet-3.0-api-7.0.42-4.el7.noarch.rpm && \
-    touch /var/lib/rpm/* && \
-    yum -y install yum install tomcat-7.0.42-4.el7.noarch.rpm tomcat-lib-7.0.42-4.el7.noarch.rpm tomcat-servlet-3.0-api-7.0.42-4.el7.noarch.rpm tomcat-el-2.2-api-7.0.42-4.el7.noarch.rpm tomcat-jsp-2.2-api-7.0.42-4.el7.noarch.rpm && \
-    rm -f *.rpm
-
 # hpack-2.1.1 - Python lib
 #
 # https://www.cvedetails.com/cve/CVE-2016-6581/
