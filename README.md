@@ -1,11 +1,9 @@
-# Code Scanning JavaScript Demo
-
-This repository demonstrates an instance of CWE-020: Improper Imput Validation. 
-
-1. Run through the setup flow in the security tab to enable code scanning. Commit directly to master. 
-2. Go to actions, and confirm that the analysis has run successfully.
-3. Edit script.js and add this code snippet. Create a PR. Wait for validation. 
-
+1. Enable advanced security and secret scanning
+2. Check on the secret scanning results and show how teams can decide to dismiss secret scanning results
+3. Configure code scanning; turn on additional rules
+4. Configure code scanning with an open-source tool
+5. Check for results
+6. Add a vulnerability in a pull request
 
 ```js
 
@@ -14,3 +12,6 @@ function endsWith(x, y) {
 }
 
 ```
+7. View the vulnerabilities from open-source tool
+8. Export the vulnerabilities using a script, and view trends
+9. Show off the community reporting capabilities 
