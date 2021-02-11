@@ -1,0 +1,7 @@
+{
+	"name":"dependabot-updates-1116",
+	"private":"true",
+	"workspaces": [
+		"modules/**"
+	]
+}
