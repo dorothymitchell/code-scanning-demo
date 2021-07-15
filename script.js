@@ -30,3 +30,7 @@ function f() {
 		return 23;
 	return 42;
 }
+
+function endsWith(x, y) {
+  return x.lastIndexOf(y) === x.length - y.length;
+}
